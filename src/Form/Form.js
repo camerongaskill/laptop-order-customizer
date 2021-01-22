@@ -5,16 +5,14 @@ import Features from '../Features';
 export default function Form(props) {
 	const features = Object.keys(Features).map((feature, idx) => {
 		const featureHash = feature + '-' + idx;
-		// return a feature component on each loop
+		const options = Features[feature];
 		return (
 			<Feature
-				FEATURES={Features}
+				key={featureHash}
 				feature={feature}
 				selected={props.selected}
-				key={featureHash}
-				updateFeature={props.updateFeature}
-				USCurrencyFormat={props.USCurrencyFormat}
-				idx={idx}
+				onUpdateFeature={props.updateFeature}
+				options={options}
 			/>
 		);
 	});
